@@ -1,0 +1,23 @@
+[Unit]
+Description=Elyano Agent workplace assistant
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=elyano-agent
+Group=elyano-agent
+WorkingDirectory=/opt/elyano-agent
+EnvironmentFile=/opt/elyano-agent/.env
+ExecStart=/usr/bin/node /opt/elyano-agent/server.mjs
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/elyano-agent/data /opt/elyano-agent/certs
+
+[Install]
+WantedBy=multi-user.target

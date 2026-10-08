@@ -1,0 +1,7 @@
+.env
+data/
+certs/
+dist/
+node_modules/
+temp/
+.vs/
